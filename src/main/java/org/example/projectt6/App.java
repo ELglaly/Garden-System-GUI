@@ -105,6 +105,7 @@ public class App extends Application {
     public static void setSizeDown(int rowNum) {
         SIZE_DOWN = rowNum * 5 * (RECT_SIZE_Plant + 10);
     }
+
     public static void main(String[] args) throws FileNotFoundException {
         // Initialize garden types from external file (vegetables, fruits, trees)
         RunGarden.addTypes(RunGarden.fruits, RunGarden.vegetables, RunGarden.trees, RunGarden.flowers);
@@ -115,13 +116,10 @@ public class App extends Application {
         Scanner myreader = new Scanner(file);
         while (myreader.hasNext()) {
             String lineString = myreader.nextLine();
-            //System.out.println(lineString);
             String line[] = lineString.split(" ");
-            // Sets number of rows in the garden
-            if (line[0].equals("rows:")) {
+            if (line[0].equals("rows:")) { // Sets number of rows in the garden
                 garden.setRows(Integer.valueOf(line[1]));
                 setSizeDown(Integer.valueOf(line[1]));
-
             }// Sets number of columns in the garden
             else if (line[0].equalsIgnoreCase("cols:")) {
                 garden.setCols(Integer.valueOf(line[1]));
@@ -178,7 +176,6 @@ public class App extends Application {
         });
         wait.play();
     }
-
     // Processes each command and applies it to the garden
     private void processCommand(String lineString, GraphicsContext gc, TextArea command) {
         String[] line = lineString.split(" ");
@@ -190,8 +187,7 @@ public class App extends Application {
             int num = Integer.parseInt(line[1]);
             if (line.length == 2) {
                 garden.growAll(num);
-                //check if the input is (2,2) Format
-            } else if (line[2].matches("\\(\\d+,\\d+\\)")) {
+            } else if (line[2].matches("\\(\\d+,\\d+\\)")) {  //check if the input is (2,2) Format
                 int row = Integer.parseInt(String.valueOf(line[2].charAt(1)));
                 int col = Integer.parseInt(String.valueOf(line[2].charAt(3)));
                 garden.growAtPosition(num, row, col);
@@ -209,8 +205,7 @@ public class App extends Application {
                 int col = Integer.parseInt(String.valueOf(line[1].charAt(3)));
                 garden.remove(row, col, line[0]);
             } else {
-                garden.remove(line[1]);
-            }
+                garden.remove(line[1]);}
         }
         command.appendText(lineString + "\n");
     }
@@ -255,5 +250,4 @@ public class App extends Application {
         primaryStage.setScene(scene);
         return canvas.getGraphicsContext2D();
     }
-
 }
