@@ -53,7 +53,7 @@ public class Garden {
 	}
 
 	/**
-	 * @param land the land to set
+
 	 */
 	public void setLand(int cols, int rows) {
 
@@ -222,7 +222,7 @@ public class Garden {
 		} else if (verb.equalsIgnoreCase("ripe")) {
 			if (className.equalsIgnoreCase("fruit")) { // Added cut functionality
 				((Fruit) land[row][col]).ripe();
-				; // Assuming you have a cut() method for Fruit
+				 // Assuming you have a cut() method for Fruit
 				land[row][col] = null;
 			} else {
 				System.out.println("Can't ripe there.\n");
@@ -230,7 +230,7 @@ public class Garden {
 		} else if (verb.equalsIgnoreCase("harvest")) {
 			if (className.equalsIgnoreCase("vegetable")) { // Added cut functionality
 				((Vegetable) land[row][col]).harvest();
-				; // Assuming you have a cut() method for Vegetable
+				 // Assuming you have a cut() method for Vegetable
 				land[row][col] = null;
 			} else {
 				System.out.println("Can't harvest there.\n");
